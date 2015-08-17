@@ -1,30 +1,3 @@
-<?php
-include 'config.php';
-include 'ini.php';
-
-$sql	=
-'SELECT *, TIMESTAMPDIFF(SECOND,`visited`,CURRENT_TIMESTAMP()) AS `diff` FROM `faucets` '.
-'WHERE 1=1 '.
-'AND `isactive` '.
-'AND TIMESTAMPDIFF(SECOND,`visited`,CURRENT_TIMESTAMP()) >= `duration` LIMIT 1'.
-'';
-
-
-$result		= $sql_obj->query( $sql );
-
-if( !$result ){
-	$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-	die( $message );
-}
-
-$row	= $result->fetch_assoc();
-$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
-
-echo '<pre style="text-align:left;font-size:10px;">'.print_r( $row, true ).'</pre>'."<br>url: $url";
-
-
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,14 +12,42 @@ echo '<pre style="text-align:left;font-size:10px;">'.print_r( $row, true ).'</pr
 </head>
 
 <body>
-
-<!--
-	<iframe id="main_fraim" src="http://coinator.net/btc/" class="main-fraim"></iframe>
-	<button onclick="$('#main_fraim').attr('src', 'http://earnbitcoinonline.com/');">Next</button>
- -->
-
-
+	<iframe id="main_fraim" src="#" class="main-fraim"></iframe>
+	<button id="next_facet_btn" onclick="getNextFaucet();">Next</button>
 </body>
+
+<script>
+var prev_faucet_id=0;
+
+function getNextFaucet(){
+
+	$.ajax({
+		method:"post",
+		dataType: "json",
+		url: "next.php",
+		data:{"prev_faucet_id":prev_faucet_id},
+
+		success: function(faucet){
+			if(faucet.error.code!=0){
+				alert(faucet.error.message);
+				return;
+			}
+
+			prev_faucet_id	= faucet.id;
+			$("#main_fraim").attr("src", faucet.url);
+    	},
+
+    	error: function(){
+			alert("Internal Error");
+		}
+    });
+}
+
+// $(document).ready(function(){
+
+// });
+</script>
+
 </html>
 
 
