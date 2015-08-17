@@ -12,8 +12,16 @@
 </head>
 
 <body>
+
+<table>
+	<tr>
+		<td><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
+		<td class="time-control">Updated in <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
+	
+	</tr>
+</table>
+
 	<iframe id="main_fraim" src="startf.php" class="main-fraim"></iframe>
-	<button id="next_facet_btn" onclick="getNextFaucet();">Next</button>
 </body>
 
 <script>
@@ -25,7 +33,7 @@ function getNextFaucet(){
 		method:"post",
 		dataType: "json",
 		url: "next.php",
-		data:{"prev_faucet_id":prev_faucet_id},
+		data:{"prev_faucet_id":prev_faucet_id,"cduratin":$("#cduraion").val()},
 
 		success: function(faucet){
 			if(faucet.error.code!=0){
@@ -34,6 +42,10 @@ function getNextFaucet(){
 			}
 
 			prev_faucet_id	= faucet.id;
+			
+			$("#cduraion").val(faucet.duration);
+// 			$("#cduraion").val(faucet.diff);
+			
 			$("#main_fraim").attr("src", faucet.url);
     	},
 

@@ -5,23 +5,26 @@ include 'ini.php';
 
 
 if( $_POST['prev_faucet_id'] ){
-	$sql	= 'UPDATE `faucets` SET `visited`=CURRENT_TIMESTAMP() WHERE `id`='.$_POST['prev_faucet_id'];
+	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+'.$_POST['cduratin'].' WHERE `id`='.$_POST['prev_faucet_id'];
 	$result = $sql_obj->query( $sql );
 
 	if( !$result ){
 		$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-		echo '{'.
-		'"error":{"code":1,"message":"'.$message.'"}'.
-	'}';
-	exit;
+		echo '{"error":{"code":1,"message":"'.$message.'"}}';
+		exit;
 	}
 }
 
 $sql	=
-'SELECT *, TIMESTAMPDIFF(SECOND,`visited`,CURRENT_TIMESTAMP()) AS `diff` FROM `faucets` '.
+'SELECT * '.
+
+// ',TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) AS `diff` '.
+
+'FROM `faucets` '.
 'WHERE 1=1 '.
 'AND `isactive` '.
-'AND TIMESTAMPDIFF(SECOND,`visited`,CURRENT_TIMESTAMP()) >= `duration` LIMIT 1'.
+'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
+'LIMIT 1'.
 '';
 
 $result		= $sql_obj->query( $sql );
@@ -37,16 +40,17 @@ exit;
 $row	= $result->fetch_assoc();
 
 $url	= 'nofaucet.php';
+$duration =
 $id	= 0;
 
 if( is_array($row) ){
 	$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
 	$id	= $row['id'];
+	$duration	= $row['duration'];
 }
-
-
 
 echo '{'.
 	'"error":{"code":0,"message":"Success"},'.
-	'"url":"'.$url.'","id":"'.$id.'"'.
+	'"url":"'.$url.'","id":"'.$id.'","duration":"'.$duration.'"'.
+// 	',"diff":"'.$row['diff'].'"'.
 '}';
