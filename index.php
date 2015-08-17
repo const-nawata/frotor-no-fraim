@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<iframe id="main_fraim" src="#" class="main-fraim"></iframe>
+	<iframe id="main_fraim" src="startf.php" class="main-fraim"></iframe>
 	<button id="next_facet_btn" onclick="getNextFaucet();">Next</button>
 </body>
 

@@ -35,9 +35,18 @@ exit;
 }
 
 $row	= $result->fetch_assoc();
-$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
+
+$url	= 'nofaucet.php';
+$id	= 0;
+
+if( is_array($row) ){
+	$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
+	$id	= $row['id'];
+}
+
+
 
 echo '{'.
 	'"error":{"code":0,"message":"Success"},'.
-	'"url":"'.$url.'","id":"'.$row['id'].'"'.
+	'"url":"'.$url.'","id":"'.$id.'"'.
 '}';
