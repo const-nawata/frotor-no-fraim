@@ -17,12 +17,12 @@
 	<tr>
 		<td><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
 		<td class="time-control">Updated in <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
-	
+
 	</tr>
 </table>
 
+<iframe id="main_fraim" src="startf.php" class="main-fraim"></iframe>
 
-	<iframe id="main_fraim" src="startf.php" class="main-fraim"></iframe>
 </body>
 
 <script>
@@ -45,8 +45,6 @@ function getNextFaucet(){
 			prev_faucet_id	= faucet.id;
 
 			$("#cduraion").val(faucet.duration);
-// 			$("#cduraion").val(faucet.diff);
-
 			$("#main_fraim").attr("src", faucet.url);
     	},
 

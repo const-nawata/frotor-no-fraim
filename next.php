@@ -16,16 +16,11 @@ if( $_POST['prev_faucet_id'] ){
 }
 
 $sql	=
-'SELECT * '.
-
-// ',TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) AS `diff` '.
-
-'FROM `faucets` '.
-'WHERE 1=1 '.
-'AND `isactive` '.
-'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-'ORDER BY `duration` DESC '.
-'LIMIT 1';
+'SELECT * FROM `faucets` WHERE 1=1 '.
+	'AND `isactive` '.
+	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
+// 'ORDER BY `duration` DESC '.
+'ORDER BY RAND() LIMIT 1';
 
 $result		= $sql_obj->query( $sql );
 
@@ -49,10 +44,7 @@ if( is_array($row) ){
 	$duration	= $row['duration'];
 }
 
-
-
 echo '{'.
 	'"error":{"code":0,"message":"Success"},'.
 	'"url":"'.$url.'","id":"'.$id.'","duration":"'.$duration.'"'.
-// 	',"diff":"'.$row['diff'].'"'.
 '}';
