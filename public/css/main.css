@@ -8,7 +8,7 @@
 }
 .time-control{
 	padding-left: 10px;
-	padding-right: 50px;
+	padding-right: 10px;
 }
 
 .time-inp{
@@ -19,4 +19,8 @@
 
 .db-id-td{
 	padding-right: 15px;
+}
+
+.disable-td{
+	padding-right: 100px;
 }

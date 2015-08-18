@@ -27,10 +27,8 @@ $result		= $sql_obj->query( $sql );
 
 if( !$result ){
 	$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-	echo '{'.
-	'"error":{"code":1,"message":"'.$message.'"}'.
-'}';
-exit;
+	echo '{"error":{"code":1,"message":"'.$message.'"}}';
+	exit;
 }
 
 $row	= $result->fetch_assoc();
