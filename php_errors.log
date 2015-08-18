@@ -1,0 +1,2 @@
+[18-Aug-2015 19:52:06 Europe/Kiev] PHP Notice:  Undefined variable: sql in E:\Soft\var\hosts\frotor\next.php on line 24
+[18-Aug-2015 19:52:06 Europe/Kiev] PHP Warning:  mysqli::query(): Empty query in E:\Soft\var\hosts\frotor\next.php on line 24

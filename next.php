@@ -3,8 +3,7 @@
 include 'config.php';
 include 'ini.php';
 
-
-if( $_POST['prev_faucet_id'] ){
+if( 0 && $_POST['prev_faucet_id'] ){
 	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+INTERVAL '.$_POST['cduratin'].' SECOND WHERE `id`='.$_POST['prev_faucet_id'];
 	$result = $sql_obj->query( $sql );
 
@@ -19,8 +18,10 @@ $sql	=
 'SELECT * FROM `faucets` WHERE 1=1 '.
 	'AND `isactive` '.
 	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-// 'ORDER BY `duration` DESC '.
-'ORDER BY RAND() LIMIT 1';
+'ORDER BY `duration` DESC '.
+// 'ORDER BY RAND()'.
+
+' LIMIT 1';
 
 $result		= $sql_obj->query( $sql );
 

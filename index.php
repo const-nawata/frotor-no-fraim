@@ -15,9 +15,9 @@
 
 <table>
 	<tr>
-		<td><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
+		<td id="db_id" class="db-id-td">id: undefined</td>
 		<td class="time-control">Updated in <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
-
+		<td><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
 	</tr>
 </table>
 
@@ -44,8 +44,9 @@ function getNextFaucet(){
 
 			prev_faucet_id	= faucet.id;
 
-			$("#cduraion").val(faucet.duration);
+			$("#db_id").html("id: "+faucet.id);
 			$("#main_fraim").attr("src", faucet.url);
+			$("#cduraion").val(faucet.duration);
     	},
 
     	error: function(){

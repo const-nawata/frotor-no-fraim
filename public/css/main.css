@@ -7,11 +7,16 @@
 	border: none"
 }
 .time-control{
-	padding-left: 50px;
+	padding-left: 10px;
+	padding-right: 50px;
 }
 
 .time-inp{
 	width: 50px;
 	padding-right: 3px;
 	text-align: right;
+}
+
+.db-id-td{
+	padding-right: 15px;
 }
