@@ -4,6 +4,31 @@
 
 var faucet_id=0;
 
+function enableAll(){
+
+	$.ajax({
+		method:"post",
+		dataType: "json",
+		url: "enable_all.php",
+//		data:{"id":faucet_id},
+
+		success: function(faucet){
+			if(faucet.error.code!=0){
+				alert(faucet.error.message);
+				return;
+			}
+			
+			alert("Success. Click next button.");
+    	},
+
+    	error: function(){
+			alert("Internal Error while all enabling.");
+		}
+    });
+	
+}
+//______________________________________________________________________________
+
 function disableFaucet(){
 
 	$.ajax({
@@ -27,6 +52,7 @@ function disableFaucet(){
     });
 	
 }
+//______________________________________________________________________________
 
 function getNextFaucet(){
 

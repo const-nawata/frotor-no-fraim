@@ -3,7 +3,7 @@
 include 'config.php';
 include 'ini.php';
 
-if( 0 && $_POST['prev_faucet_id'] ){
+if( $_POST['prev_faucet_id'] ){
 	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+INTERVAL '.$_POST['cduratin'].' SECOND WHERE `id`='.$_POST['prev_faucet_id'];
 	$result = $sql_obj->query( $sql );
 
