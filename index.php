@@ -17,9 +17,10 @@
 	<tr>
 		<td id="db_id" class="db-id-td">id: undefined</td>
 		<td class="time-control">Updated in <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
-		<td class=""><button id="disable_facet_btn" onclick="disableFaucet();">Disable</button></td>
-		<td class="disable-td"><button id="disable_facet_btn" onclick="enableAll();">Enable All</button></td>
-		<td><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
+		<td><button id="disable_facet_btn" onclick="disableFaucet();">Disable</button></td>
+		<td><button id="enable_all_btn" onclick="enableAll();">Enable All</button></td>
+		<td><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
+		<td class="enable-td"><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
 	</tr>
 </table>
 

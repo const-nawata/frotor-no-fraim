@@ -1,8 +1,15 @@
 /**
- * 
+ *        
  */
 
-var faucet_id=0;
+var faucet_id=0
+	,faucet_url=""
+;
+
+function refresh(){
+	$("#main_fraim").attr("src", faucet_url);
+}
+//______________________________________________________________________________
 
 function enableAll(){
 
@@ -17,8 +24,10 @@ function enableAll(){
 				alert(faucet.error.message);
 				return;
 			}
+			faucet_id	= 0;
+			faucet_url="";
 			
-			alert("Success. Click next button.");
+			alert("All faucets enabled.\n\nClick next button.");
     	},
 
     	error: function(){
@@ -43,7 +52,7 @@ function disableFaucet(){
 				return;
 			}
 			
-			alert("Success. Click next button.");
+			alert("Faucet disabled.\n\nClick next button.");
     	},
 
     	error: function(){
@@ -69,9 +78,10 @@ function getNextFaucet(){
 			}
 
 			faucet_id	= faucet.id;
+			faucet_url	= faucet.url;
 
-			$("#db_id").html("id: "+faucet.id);
-			$("#main_fraim").attr("src", faucet.url);
+			$("#db_id").html("id: "+faucet_id);
+			$("#main_fraim").attr("src", faucet_url);
 			$("#cduraion").val(faucet.duration);
     	},
 
