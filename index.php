@@ -15,11 +15,11 @@
 
 <table>
 	<tr>
-		<td id="db_id" class="db-id-td">id: undefined</td>
-		<td class="time-control">Updated in <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
-		<td><button id="disable_facet_btn" onclick="disableFaucet();">Disable</button></td>
+		<td id="id_td" class="db-id-td hided" >id: undefined</td>
+		<td id="act_after_td" class="time-control hided">Show after <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
+		<td id="refresh_td" class="hided"><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
+		<td id="disable_td" class="hided"><button id="disable_btn" onclick="disableFaucet();">Disable</button></td>
 		<td><button id="enable_all_btn" onclick="enableAll();">Enable All</button></td>
-		<td><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
 		<td class="enable-td"><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
 	</tr>
 </table>
@@ -30,9 +30,9 @@
 
 <script>
 
-// $(document).ready(function(){
-
-// });
+$(document).ready(function(){
+	$(".hided").hide();
+});
 
 </script>
 

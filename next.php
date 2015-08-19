@@ -18,8 +18,8 @@ $sql	=
 'SELECT * FROM `faucets` WHERE 1=1 '.
 	'AND `isactive` '.
 	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-'ORDER BY `duration` DESC '.
-// 'ORDER BY RAND()'.
+// 'ORDER BY `duration` DESC '.
+'ORDER BY RAND()'.
 
 ' LIMIT 1';
 

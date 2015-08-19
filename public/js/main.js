@@ -61,7 +61,7 @@ function disableFaucet(){
     });
 	
 }
-//______________________________________________________________________________
+//______________________________________________________________________________  hided
 
 function getNextFaucet(){
 
@@ -80,9 +80,13 @@ function getNextFaucet(){
 			faucet_id	= faucet.id;
 			faucet_url	= faucet.url;
 
-			$("#db_id").html("id: "+faucet_id);
+			$("#id_td").html("id: "+faucet_id);
 			$("#main_fraim").attr("src", faucet_url);
 			$("#cduraion").val(faucet.duration);
+			
+			(faucet_id != 0 )
+				? $(".hided").show()
+				: $(".hided").hide();
     	},
 
     	error: function(){
