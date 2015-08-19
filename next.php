@@ -1,9 +1,10 @@
 <?php
-
 include 'config.php';
 include 'ini.php';
 
-if( $_POST['prev_faucet_id'] ){
+$is_debug	= FALSE;
+
+if(!$is_debug && (bool)$_POST['prev_faucet_id'] ){
 	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+INTERVAL '.$_POST['cduratin'].' SECOND WHERE `id`='.$_POST['prev_faucet_id'];
 	$result = $sql_obj->query( $sql );
 
@@ -14,14 +15,15 @@ if( $_POST['prev_faucet_id'] ){
 	}
 }
 
+$order	= (bool)mt_rand( 0, 1 )
+	? '`duration` DESC'
+	: 'RAND()';
+
 $sql	=
 'SELECT * FROM `faucets` WHERE 1=1 '.
 	'AND `isactive` '.
 	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-// 'ORDER BY `duration` DESC '.
-'ORDER BY RAND()'.
-
-' LIMIT 1';
+'ORDER BY '.$order.' LIMIT 1';
 
 $result		= $sql_obj->query( $sql );
 
@@ -46,4 +48,5 @@ if( is_array($row) ){
 echo '{'.
 	'"error":{"code":0,"message":"Success"},'.
 	'"url":"'.$url.'","id":"'.$id.'","duration":"'.$duration.'"'.
+// 	',"debug":"'.$order.'"'.
 '}';
