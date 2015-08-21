@@ -15,15 +15,11 @@ if(!$is_debug && (bool)$_POST['prev_faucet_id'] ){
 	}
 }
 
-$order	= (bool)mt_rand( 0, 1 )
-	? '`duration` DESC'
-	: 'RAND()';
-
 $sql	=
 'SELECT * FROM `faucets` WHERE 1=1 '.
 	'AND `isactive` '.
 	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-'ORDER BY '.$order.' LIMIT 1';
+'ORDER BY `updated` LIMIT 1';
 
 $result		= $sql_obj->query( $sql );
 
