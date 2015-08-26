@@ -69,7 +69,11 @@ function getNextFaucet(){
 		method:"post",
 		dataType: "json",
 		url: "next.php",
-		data:{"prev_faucet_id":faucet_id,"cduratin":$("#cduraion").val()},
+		data:{
+			"prev_faucet_id":faucet_id,
+			"cduratin":$("#cduraion").val(),
+			"oduratin":$("#oduraion").val()
+		},
 
 		success: function(faucet){
 			if(faucet.error.code!=0){
@@ -83,6 +87,7 @@ function getNextFaucet(){
 			$("#id_td").html("id: "+faucet_id);
 			$("#main_fraim").attr("src", faucet_url);
 			$("#cduraion").val(faucet.duration);
+			$("#oduraion").val(faucet.duration);
 			
 			(faucet_id != 0 )
 				? $(".hided").show()

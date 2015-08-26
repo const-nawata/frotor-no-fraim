@@ -4,8 +4,16 @@ include 'ini.php';
 
 $is_debug	= FALSE;
 
-if(!$is_debug && (bool)$_POST['prev_faucet_id'] ){
-	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+INTERVAL '.$_POST['cduratin'].' SECOND WHERE `id`='.$_POST['prev_faucet_id'];
+$prv_faucet_id	= $_POST['prev_faucet_id'];
+$cduratin	= (int)$_POST['cduratin'];
+$oduratin	= (int)$_POST['oduratin'];
+
+if(!$is_debug && (bool)$prv_faucet_id ){
+
+	$updated	= ($cduratin == $oduratin) ? ', `updated`=NOW() ' : '';
+
+	$sql	= 'UPDATE `faucets` SET `until`=CURRENT_TIMESTAMP()+INTERVAL '.$cduratin.' SECOND'.$updated.' WHERE `id`='.$prv_faucet_id;
+
 	$result = $sql_obj->query( $sql );
 
 	if( !$result ){
@@ -44,5 +52,5 @@ if( is_array($row) ){
 echo '{'.
 	'"error":{"code":0,"message":"Success"},'.
 	'"url":"'.$url.'","id":"'.$id.'","duration":"'.$duration.'"'.
-// 	',"debug":"'.$order.'"'.
+// 	',"debug":"'.$dubug.'"'.
 '}';

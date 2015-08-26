@@ -16,7 +16,12 @@
 <table>
 	<tr>
 		<td id="id_td" class="db-id-td hided" >id: undefined</td>
-		<td id="act_after_td" class="time-control hided">Show after <input type="text" id="cduraion" name="cduraion" class="time-inp"> sec.</td>
+
+		<td id="act_after_td" class="time-control hided">Show after
+			<input type="text" id="cduraion" name="cduraion" class="time-inp" /> sec.
+			<input type="hidden" id="oduraion" name="oduraion" />
+		</td>
+
 		<td id="refresh_td" class="hided"><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
 		<td id="disable_td" class="hided"><button id="disable_btn" onclick="disableFaucet();">Disable</button></td>
 		<td><button id="enable_all_btn" onclick="enableAll();">Enable All</button></td>
