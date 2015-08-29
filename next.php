@@ -25,18 +25,6 @@ if(!$is_debug && (bool)$prv_faucet_id ){
 	}
 }
 
-// $count_all	= get_all_faucets_count();
-// if( $count_all === FALSE ){
-// 	echo '{"error":{"code":1,"message":"'.get_sql_err_mess().'"}}';
-// 	exit;
-// }
-
-// $count_act	= get_act_faucets_count();
-// if( $count_act === FALSE ){
-// 	echo '{"error":{"code":2,"message":"'.get_sql_err_mess().'"}}';
-// 	exit;
-// }
-
 $row	= get_faucet();
 if( $row === FALSE ){
 	echo '{"error":{"code":3,"message":"'.get_sql_err_mess().'"}}';
@@ -57,6 +45,5 @@ if( is_array($row) ){
 echo '{'.
 	'"error":{"code":0,"message":"Success"}'.
 	',"url":"'.$url.'","id":'.$id.',"duration":'.$duration.
-// 	',"n_all":'.$count_all.',"n_act":'.$count_act.
 // 	',"debug":"'.$dubug.'"'.
 '}';
