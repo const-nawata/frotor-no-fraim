@@ -6,7 +6,41 @@ var faucet_id=0
 	,faucet_url=""
 ;
 
+function showInfo(){  
+
+	$.ajax({
+		method:"post",
+		dataType: "json",
+		url: "info.php",
+
+		success: function(info){		
+			
+			if(info.error.code!=0){
+				alert(info.error.message);
+				return;
+			}
+			
+			$("#n_all_span").html(info.n_all);
+			$("#n_active_span").html(info.n_act);
+			
+			
+			(info.n_act != 0 )
+				? $(".hided").show()
+				: $(".hided").hide();
+			
+    	},
+
+    	error: function(){
+			alert("Internal Error while show info.");
+		}
+    });
+	
+}
+//______________________________________________________________________________
+
 function refresh(){
+	showInfo();
+
 	$("#main_fraim").attr("src", faucet_url);
 }
 //______________________________________________________________________________
@@ -17,19 +51,15 @@ function enableAll(){
 		method:"post",
 		dataType: "json",
 		url: "enable_all.php",
-//		data:{"id":faucet_id},
 
 		success: function(faucet){
 			if(faucet.error.code!=0){
 				alert(faucet.error.message);
 				return;
 			}
-			
+
+			showInfo();
 			alert("All faucets enabled.\n\nClick next button.");
-			
-			faucet_id	= 0;
-			faucet_url="";
-			getNextFaucet();
     	},
 
     	error: function(){
@@ -95,12 +125,7 @@ function getNextFaucet(){
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
 			
-			$("#n_all_span").html(faucet.n_all);
-			$("#n_active_span").html(faucet.n_act);
-			
-			(faucet_id != 0 )
-				? $(".hided").show()
-				: $(".hided").hide();
+			showInfo();
     	},
 
     	error: function(){
