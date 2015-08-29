@@ -89,6 +89,9 @@ function getNextFaucet(){
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
 			
+			$("#n_all_span").html(faucet.n_all);
+			$("#n_active_span").html(faucet.n_act);
+			
 			(faucet_id != 0 )
 				? $(".hided").show()
 				: $(".hided").hide();
