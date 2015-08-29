@@ -1,4 +1,6 @@
 <?php
+global $sql_obj;
+
 $sql_obj = new mysqli( $host, $user, $pass, $db);
 
 if( mysqli_connect_errno() )

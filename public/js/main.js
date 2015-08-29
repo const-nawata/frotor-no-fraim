@@ -24,10 +24,12 @@ function enableAll(){
 				alert(faucet.error.message);
 				return;
 			}
-			faucet_id	= 0;
-			faucet_url="";
 			
 			alert("All faucets enabled.\n\nClick next button.");
+			
+			faucet_id	= 0;
+			faucet_url="";
+			getNextFaucet();
     	},
 
     	error: function(){
@@ -53,6 +55,10 @@ function disableFaucet(){
 			}
 			
 			alert("Faucet disabled.\n\nClick next button.");
+			
+			faucet_id	= 0;
+			faucet_url="";
+			getNextFaucet();
     	},
 
     	error: function(){
@@ -61,7 +67,7 @@ function disableFaucet(){
     });
 	
 }
-//______________________________________________________________________________  hided
+//______________________________________________________________________________
 
 function getNextFaucet(){
 

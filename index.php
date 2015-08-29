@@ -26,8 +26,8 @@
 		<td id="disable_td" class="hided"><button id="disable_btn" onclick="disableFaucet();">Disable</button></td>
 		<td><button id="enable_all_btn" onclick="enableAll();">Enable All</button></td>
 		<td class="enable-td"><button id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
-		<td class="num-info-td">Faucets (all / activ): <span id="n_all_span">155</span> / <span id="n_active_span">27</span></td>
-		
+		<td class="num-info-td">Faucets: <span id="n_all_span">155</span> / <span id="n_active_span">27</span></td>
+
 	</tr>
 </table>
 

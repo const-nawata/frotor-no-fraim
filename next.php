@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 include 'ini.php';
+include 'functions.php';
 
 $is_debug	= FALSE;
 
@@ -24,57 +25,28 @@ if(!$is_debug && (bool)$prv_faucet_id ){
 	}
 }
 
-
-//															All / Active
-$count_all	= 
-$count_act	= 0;
-
-$sql	= "SELECT count(*) AS `count` FROM `faucets`";
-$result		= $sql_obj->query( $sql );
-if( !$result ){
-	$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-	echo '{"error":{"code":1,"message":"'.$message.'"}}';
-	exit;
-}
-$count_all	= $result->fetch_assoc()['count'];
-
-$sql	=
-'SELECT count(*) AS `count` FROM `faucets` WHERE 1=1 '.
-	'AND `isactive` '.
-	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-// 	'ORDER BY `updated` LIMIT 1'.
-'';
-$result		= $sql_obj->query( $sql );
-if( !$result ){
-	$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-	echo '{"error":{"code":1,"message":"'.$message.'"}}';
-	exit;
-}
-$count_act	= $result->fetch_assoc()['count'];
-
-
-//															Get Faucet
-$sql	=
-'SELECT * FROM `faucets` WHERE 1=1 '.
-	'AND `isactive` '.
-	'AND TIMESTAMPDIFF(SECOND,`until`,CURRENT_TIMESTAMP()) >= 0 '.
-'ORDER BY `updated` LIMIT 1';
-
-$result		= $sql_obj->query( $sql );
-
-if( !$result ){
-	$message	= 'MySQL error: '.$sql_obj->errno.' / '.$sql_obj->error;
-	echo '{"error":{"code":1,"message":"'.$message.'"}}';
+$count_all	= get_all_faucets_count();
+if( $count_all === FALSE ){
+	echo '{"error":{"code":1,"message":"'.get_sql_err_mess().'"}}';
 	exit;
 }
 
-$row	= $result->fetch_assoc();
+$count_act	= get_act_faucets_count();
+if( $count_act === FALSE ){
+	echo '{"error":{"code":2,"message":"'.get_sql_err_mess().'"}}';
+	exit;
+}
 
-
+$row	= get_faucet();
+if( $row === FALSE ){
+	echo '{"error":{"code":3,"message":"'.get_sql_err_mess().'"}}';
+	exit;
+}
 
 $url	= 'nofaucet.php';
-$duration =
-$id	= 0;
+
+$duration	=
+$id			= 0;
 
 if( is_array($row) ){
 	$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
