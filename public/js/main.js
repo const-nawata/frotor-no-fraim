@@ -59,7 +59,7 @@ function enableAll(){
 			}
 
 			showInfo();
-			alert("All faucets enabled.\n\nClick next button.");
+			alert("All faucets enabled.");
     	},
 
     	error: function(){
@@ -84,7 +84,7 @@ function disableFaucet(){
 				return;
 			}
 			
-			alert("Faucet disabled.\n\nClick next button.");
+			alert("Faucet disabled.");
 			
 			faucet_id	= 0;
 			faucet_url="";
