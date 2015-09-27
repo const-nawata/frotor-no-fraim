@@ -2,7 +2,9 @@
 include 'config.php';
 include 'ini.php';
 
-$sql	= 'UPDATE `faucets` SET `isactive`=FALSE WHERE `id`='.$_POST['id'];
+$priority	= (int)$_POST['priority'];
+
+$sql	= 'UPDATE `faucets` SET `isactive`=FALSE, `priority`='.$priority.' WHERE `id`='.$_POST['id'];
 $result = $sql_obj->query( $sql );
 
 if( !$result ){

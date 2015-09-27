@@ -1,13 +1,22 @@
 @CHARSET "UTF-8";
 
-.main-fraim{
-	width: 95%;
-	position: absolute; top: 40px;
-	height: 90%; 
-	border: none"
+html, body{
+  height: 98.5%;
 }
-.time-control{
-	padding-left: 10px;
+
+.main-tbl{
+	width: 100%;
+	height: 100%;
+}
+
+.db-id-td{
+	width: 100px;
+	text-align: left;
+}
+
+.input-control-td{
+	white-space: nowrap;
+	width: 1px;
 	padding-right: 10px;
 }
 
@@ -17,14 +26,24 @@
 	text-align: right;
 }
 
-.db-id-td{
-	padding-right: 15px;
-}
-
-.enable-td{
-	padding-left: 100px;
+.control-td{
+/*	padding-left: 100px;
+	text-align: right;*/
+	width: 1px;
 }
 
 .num-info-td{
-	padding-left: 100px;
+	/*width: 100%;*/
+	padding-left: 10px;
+	padding-right: 100px;
+}
+
+.frame-td{
+	height: 100%;
+}
+
+.main-fraim{
+	width: 100%;
+	height: 100%; 
+	border: none"
 }

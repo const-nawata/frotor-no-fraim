@@ -76,7 +76,10 @@ function disableFaucet(){
 		method:"post",
 		dataType: "json",
 		url: "disable.php",
-		data:{"id":faucet_id},
+		data:{
+			"id":faucet_id,
+			"priority":$("#priority").val()
+		},
 
 		success: function(faucet){
 			if(faucet.error.code!=0){
@@ -97,7 +100,7 @@ function disableFaucet(){
     });
 	
 }
-//______________________________________________________________________________
+//______________________________________________________________________________ 
 
 function getNextFaucet(){
 
@@ -108,7 +111,8 @@ function getNextFaucet(){
 		data:{
 			"prev_faucet_id":faucet_id,
 			"cduratin":$("#cduraion").val(),
-			"oduratin":$("#oduraion").val()
+			"oduratin":$("#oduraion").val(),
+			"priority":$("#priority").val()
 		},
 
 		success: function(faucet){
@@ -124,6 +128,7 @@ function getNextFaucet(){
 			$("#main_fraim").attr("src", faucet_url);
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
+			$("#priority").val(faucet.priority);
 			
 			showInfo();
     	},
