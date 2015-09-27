@@ -15,19 +15,19 @@
 
 <table class="main-tbl">
 	<tr>
-		<td id="id_td" class="db-id-td hided" >id: undefined</td>
+		<td id="id_td" class="db-id-td hided" >id:&nbsp;undefined</td>
 
-		<td id="act_after_td" class="input-control-td hided">Show after
+		<td id="act_after_td" class="input-control-td hided">Show&nbsp;after&nbsp;
 			<input type="text" id="cduraion" name="cduraion" class="time-inp" /> sec.
 			<input type="hidden" id="oduraion" name="oduraion" />
 		</td>
 
 
-		<td id="priority_td" class="input-control-td">Priority
+		<td id="priority_td" class="input-control-td">Priority&nbsp;
 			<input type="text" id="priority" name="priority" class="time-inp" />
 		</td>
 
-		<td class="num-info-td">Faucets (all/active/inactive): <span id="n_all_span">155</span> / <span id="n_active_span">27</span></td>
+		<td class="num-info-td">Faucets&nbsp;(all&nbsp;/&nbsp;active):&nbsp;<span id="n_all_span">155</span>&nbsp;/&nbsp;<span id="n_active_span">27</span></td>
 
 		<td id="refresh_td" class="control-td hided"><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
 		<td id="disable_td" class="control-td hided"><button id="disable_btn" onclick="disableFaucet();">Disable</button></td>
@@ -42,17 +42,13 @@
 		</td>
 	</tr>
 
-
 </table>
-
-
 
 </body>
 
 <script>
 
 $(document).ready(function(){
-// 	$(".hided").hide();
 	getNextFaucet();
 });
 

@@ -124,7 +124,7 @@ function getNextFaucet(){
 			faucet_id	= faucet.id;
 			faucet_url	= faucet.url;
 
-			$("#id_td").html("id: "+faucet_id);
+			$("#id_td").html("id:&nbsp;"+faucet_id);
 			$("#main_fraim").attr("src", faucet_url);
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
