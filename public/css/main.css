@@ -1,7 +1,53 @@
 @CHARSET "UTF-8";
 
 html, body{
-  height: 98.5%;
+  height: 99.82%;
+  background-color: #d8eff1;
+  margin: 0;
+  padding: 0;
+}
+input{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px ridge #495198;
+    font-size: 14px;
+}
+td{
+	color: #36006c;
+	font-size: 18px;
+}
+button{
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 17px;
+	border: 1px ridge #495198;
+	border-radius: 3px;
+	height: 28px;
+	vertical-align: -moz-middle-with-baseline;
+	cursor: pointer;
+	background-color: #c4d1b1;
+	color: #4d5b35;
+	width: 100px;
+}
+button:HOVER{
+	background-color: #d6dfc8;
+}
+button:active{
+	background-color: #4d5b35;
+	color: #c4d1b1
+}
+
+.next-btn{
+	background-color: #dd9bc6;
+	color: #86285b;
+}
+.next-btn:HOVER{
+	background-color: #eabfdb;
+}
+.next-btn:ACTIVE{
+	background-color: #86285b;
+	color: #edc9e0;
 }
 
 .main-tbl{
@@ -10,14 +56,18 @@ html, body{
 }
 
 .db-id-td{
-	width: 100px;
+	width: 70px;
 	text-align: left;
+	padding-left: 20px;
+	padding-right: 35px;
+	font-weight: bold;
+	color: #b7005b;
 }
 
 .input-control-td{
 	white-space: nowrap;
 	width: 1px;
-	padding-right: 10px;
+	padding-right: 80px;
 }
 
 .time-inp{
@@ -27,8 +77,6 @@ html, body{
 }
 
 .control-td{
-/*	padding-left: 100px;
-	text-align: right;*/
 	width: 1px;
 }
 
