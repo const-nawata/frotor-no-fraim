@@ -129,6 +129,7 @@ function getNextFaucet(){
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
 			$("#priority").val(faucet.priority);
+			$("#last_payment").html(faucet.last_payment);
 			
 			showInfo();
     	},

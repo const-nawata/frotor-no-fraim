@@ -18,7 +18,7 @@
 		<td class="control-td"><button class="next-btn" id="next_facet_btn" onclick="getNextFaucet();">Next</button></td>
 		<td id="id_td" class="db-id-td hided" >id:&nbsp;undefined</td>
 
-		<td id="act_after_td" class="input-control-td hided">Show&nbsp;after&nbsp;
+		<td id="act_after_td" class="input-control-td hided">Show after
 			<input type="text" id="cduraion" name="cduraion" class="time-inp" /> sec.
 			<input type="hidden" id="oduraion" name="oduraion" />
 		</td>
@@ -28,7 +28,10 @@
 			<input type="text" id="priority" name="priority" class="time-inp" />
 		</td>
 
-		<td class="num-info-td">Faucets&nbsp;(all&nbsp;/&nbsp;active):&nbsp;<span id="n_all_span">155</span>&nbsp;/&nbsp;<span id="n_active_span">27</span></td>
+		<td class="num-info-td">
+			Faucets (all / active): <span id="n_all_span"></span> / <span id="n_active_span"></span>
+			<span id="last_payment" class="last-payment"></span>
+		</td>
 
 		<td id="refresh_td" class="control-td hided"><button id="refresh_btn" onclick="refresh();">Refresh</button></td>
 		<td id="disable_td" class="control-td hided"><button id="disable_btn" onclick="disableFaucet();">Disable</button></td>

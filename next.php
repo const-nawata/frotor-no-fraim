@@ -3,15 +3,13 @@ include 'config.php';
 include 'ini.php';
 include 'functions.php';
 
-$is_debug	= FALSE;
-
 //															Update
 $prv_faucet_id	= $_POST['prev_faucet_id'];
 $cduratin	= (int)$_POST['cduratin'];
 $oduratin	= (int)$_POST['oduratin'];
 $priority	= (int)$_POST['priority'];
 
-if(!$is_debug && (bool)$prv_faucet_id ){
+if( (bool)$prv_faucet_id ){
 
 	$updated	= ($cduratin == $oduratin) ? ', `updated`=NOW() ' : '';
 
@@ -38,16 +36,23 @@ $url	= 'nofaucet.php';
 $duration	=
 $id			= 0;
 $priority	= 1;
+$last_payment	= 'undefined';
 
 if( is_array($row) ){
 	$url	= $row['url'].($row['referal']!=''?'?r='.$row['referal']:'');
 	$id	= $row['id'];
 	$duration	= $row['duration'];
 	$priority	= $row['priority'];
+	$last_payment	= date('d-m-Y',strtotime($row['updated']));
 }
+
 
 echo '{'.
 	'"error":{"code":0,"message":"Success"}'.
-	',"url":"'.$url.'","id":'.$id.',"duration":'.$duration.',"priority":'.$priority.
+	',"url":"'.$url.'"'.
+	',"id":'.$id.
+	',"duration":'.$duration.
+	',"priority":'.$priority.
+	',"last_payment":"Last payment on '.$last_payment.'"'.
 // 	',"debug":"'.$dubug.'"'.
 '}';

@@ -67,7 +67,7 @@ button:active{
 .input-control-td{
 	white-space: nowrap;
 	width: 1px;
-	padding-right: 80px;
+	padding-right: 60px;
 }
 
 .time-inp{
@@ -84,6 +84,16 @@ button:active{
 	/*width: 100%;*/
 	padding-left: 10px;
 	padding-right: 100px;
+	white-space: nowrap;
+}
+
+.last-payment{
+	font-family: arial;
+	padding-left: 140px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #e60073;
+	white-space: nowrap;
 }
 
 .frame-td{
